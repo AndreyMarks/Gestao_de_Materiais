@@ -1,0 +1,903 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #1a0033;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- Box principal --- */
+.login-box {
+    width: 100%;
+    max-width: 400px;
+    min-height: 700px;
+    position: relative;
+}
+
+/* --- Logo e títulos --- */
+.logo-section {
+    margin-top: 30%;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.logo {
+    background-color: #ffffff;
+    color: #1a0033;
+    padding: 10px 24px;
+    border-radius: 50px;
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+.logo img {
+    width: 78px;
+}
+
+.title-desktop {
+    display: none;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+
+.title-mobile {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+/* --- Formulários --- */
+.auth-form {
+    margin-top: 40%;
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 32px 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+    position: absolute;
+    top: 140px;
+    left: 0;
+    width: 100%;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateX(30px);
+    pointer-events: none;
+}
+
+/* --- Inputs --- */
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    color: #1a0033;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1a0033;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #1a0033;
+}
+
+.form-group input::placeholder {
+    color: #9ca3af;
+}
+
+/* --- Botões --- */
+.btn-primary {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #1a0033;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 24px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2d0052;
+}
+
+.forgot-password {
+    text-align: center;
+    margin: 14px 0;
+}
+
+.forgot-password a {
+    color: #1a0033;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+
+.button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.btn-secondary,
+.btn-outline {
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary {
+    background-color: #1a0033;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-outline {
+    background-color: #ffffff;
+    color: #1a0033;
+    border: 2px solid #1a0033;
+}
+
+.button-group .active {
+    background-color: #1a0033 !important;
+    color: #ffffff !important;
+    border: none !important;
+    pointer-events: none;
+}
+
+/* Modal inline dentro da row */
+.reset-modal {
+  display: none;
+  background-color: #2a003f;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 6px;
+  color: #fff;
+  position: relative;
+}
+
+.reset-modal input {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.reset-modal button {
+  padding: 8px 15px;
+  background-color: #ff0044;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.close-inline {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+
+
+/* --- Rodapé --- */
+.footer {
+    background-color: #1a0033;
+    color: #ffffff;
+    text-align: left;
+    padding: 16px 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* --- Desktop --- */
+@media (min-width: 768px) {
+    .login-box {
+        max-width: 450px;
+    }
+    .title-desktop {
+        display: block;
+    }
+    .title-mobile {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   Estilos para as Páginas de Gestão de Materiais (Dashboard, Inventário, etc.)
+   ========================================================================== */
+
+:root {
+    --primary-color: #1a0e4d; /* Roxo escuro */
+    --secondary-color: #7b1fa2; /* Roxo */
+    --accent-color: #0066cc; /* Azul */
+    --background-color: #f5f5f5;
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --text-light: #666666;
+    --red-color: #e53935;
+    --border-color: #0066cc;
+    --border-radius: 4px;
+    --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --latam-purple: #4b0076;
+    --latam-magenta: #e4007f;
+    --latam-blue: #009ee3;
+    --latam-bg: #f5f6fa;
+}
+
+/* Resetando o body para as páginas internas */
+body.app-body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row; /* Volta para layout de app */
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    gap: 0;
+    flex: 1;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 180px;
+    background-color: var(--card-background);
+    padding: 20px 15px;
+    border-right: 2px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.menu li {
+    margin-bottom: 5px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 10px 12px;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    gap: 10px;
+}
+
+.menu-item i {
+    width: 18px;
+    text-align: center;
+    color: var(--accent-color);
+}
+
+.menu-item span {
+    flex: 1;
+}
+
+.menu-item:hover {
+    background-color: #f0f0f0;
+}
+
+.menu-item.active {
+    background-color: #e8f0ff;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.menu-item.active i {
+    color: var(--primary-color);
+}
+
+/* ===== MAIN CONTENT ===== */
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* ===== HEADER ===== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-background);
+    padding: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.header-left {
+    flex: 1;
+}
+
+.title {
+    font-size: 1.3em;
+    color: var(--primary-color);
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    max-height: 100px;
+    max-width: 150px;
+    object-fit: contain;
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cards-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: var(--card-background);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.pedidos-card,
+.armazenamento-card {
+    flex: 1;
+    min-width: 300px;
+}
+
+.table-card {
+    width: 100%;
+}
+
+.card-title {
+    font-size: 1.1em;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ===== METRICS ===== */
+.metrics {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    gap: 8px;
+}
+
+.metric-icon {
+    font-size: 1.8em;
+    color: var(--secondary-color);
+}
+
+.metric-number {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.metric-label {
+    font-size: 0.75em;
+    color: var(--text-light);
+    line-height: 1.2;
+}
+
+.metric-divider {
+    width: 1px;
+    height: 60px;
+    background-color: #e0e0e0;
+}
+
+/* ===== TABLE (Geral) ===== */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.data-table thead {
+    background-color: var(--primary-color); /* Usando a cor primária para o cabeçalho */
+}
+
+.data-table th {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.data-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    color: var(--text-color);
+    font-size: 0.95em;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ===== FORMULÁRIOS (Cadastro, Pedidos) ===== */
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--card-background);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.input-field,
+.select-field,
+.textarea-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.primary-button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.primary-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.secondary-button {
+    background-color: #ccc;
+    color: var(--text-color);
+}
+
+.secondary-button:hover {
+    background-color: #bbb;
+}
+
+/* Estilos específicos para a página de Pedidos */
+.pedidos-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.pedidos-nav .button {
+    flex: 1;
+    min-width: 150px;
+    justify-content: center;
+}
+
+.pedidos-view {
+    display: none;
+}
+
+.pedidos-view.active-view {
+    display: block;
+}
+
+.hidden-view {
+    display: none !important;
+}
+
+.item-row-compact {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: flex-end;
+}
+
+.item-row-compact .form-group {
+    margin-bottom: 0;
+}
+
+.item-col-nome { flex: 3; }
+.item-col-qtd { flex: 1; max-width: 80px; }
+.item-col-obs { flex: 2; }
+.item-col-entrega { flex: 2; }
+
+.btn-remove-item {
+    background-color: var(--red-color);
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2em;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.btn-add-item-compact {
+    margin-top: 10px;
+}
+
+/* Estilos para a página de Inventário */
+.inventory-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.inventory-controls .filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.inventory-controls .select-field {
+    width: 200px;
+}
+
+.action-cell {
+    width: 80px;
+    text-align: center;
+}
+
+.action-icon {
+    color: var(--accent-color);
+    font-size: 1.1em;
+    margin: 0 5px;
+}
+
+/* Estilos para a página de Relatórios */
+.relatorios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.relatorios-grid .card {
+    text-align: center;
+}
+
+.relatorios-grid h2 {
+    color: var(--latam-purple);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.relatorios-grid canvas {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 250px;
+}
+
+.table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    padding: 20px;
+}
+
+.relatorios-grid table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.relatorios-grid thead th {
+    background-color: var(--latam-purple);
+    color: #fff;
+    text-align: left;
+    padding: 6px 8px;
+}
+
+.relatorios-grid tbody td {
+    padding: 6px 8px;
+    border: 1px solid #eee;
+}
+
+.relatorios-grid tbody tr:nth-child(even) {
+    background-color: #f6f4f9;
+}
+
+.highlight {
+    color: var(--latam-magenta);
+    font-weight: 600;
+}
+
+.wide {
+    grid-column: 1 / -1;
+}
+
+/* ===== MOBILE MENU BUTTON ===== */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.3em;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE DESIGN (App) ===== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .cards-container {
+        flex-direction: column;
+    }
+
+    .pedidos-card,
+    .armazenamento-card {
+        min-width: 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .logo-section{
+        margin-top: 20%;
+    }
+
+
+    .auth-form {
+        margin-top: 30%;
+        margin-left: 10%;
+        width: 80%;
+    }
+
+
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid var(--border-color);
+        padding: 10px 15px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background-color: var(--card-background);
+    }
+
+    .sidebar.mobile-open {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    .content {
+        padding: 15px;
+        padding-top: 20px;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .title {
+        font-size: 1.1em;
+    }
+
+    .logo {
+        max-height: 170px;
+    }
+
+    .cards-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .card-title {
+        font-size: 0.95em;
+        margin-bottom: 10px;
+    }
+
+    .metrics {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .metric-divider {
+        display: none;
+    }
+
+    .metric {
+        width: 100%;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Responsive Table */
+    .data-table thead {
+        display: none;
+    }
+
+    .data-table tbody,
+    .data-table tr,
+    .data-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .data-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+    }
+
+    .data-table td {
+        padding: 40px 15px;
+        border: none;
+        border-bottom: 1px solid #e0e0e0;
+        position: relative;
+        padding-left: 120px;
+        text-align: left;
+    }
+
+    .data-table td:last-child {
+        border-bottom: none;
+    }
+
+    .data-table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        font-weight: bold;
+        color: var(--primary-color);
+        width: 100px;
+        text-align: left;
+    }
+
+    .table-card {
+        padding: 15px;
+    }
+}

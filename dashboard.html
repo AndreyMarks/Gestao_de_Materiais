@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Materiais e Insumos - LATAM CARGO</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="menu">
+                <ul>
+                    <li><a href="dashboard.html" class="menu-item active"><i class="fas fa-home"></i><span>Início</span></a></li>
+                    <li><a href="inventario.html" class="menu-item"><i class="fas fa-box-open"></i><span>Inventário</span></a></li>
+                    <li><a href="pedidos.html" class="menu-item"><i class="fas fa-clipboard-list"></i><span>Pedidos</span></a></li>
+                    <li><a href="cadastro.html" class="menu-item"><i class="fas fa-plus-circle"></i><span>Cadastro</span></a></li>
+                    <li><a href="Relatorios.html" class="menu-item"><i class="fas fa-chart-bar"></i><span>Relatórios</span></a></li>
+                    <li><a href="login.html" class="menu-item" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Sair</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h1 class="title">GESTÃO DE MATERIAIS E INSUMOS</h1>
+                </div>
+                <div class="header-right">
+                    <img src="latam_logo.png" alt="LATAM CARGO Logo" class="logo">
+                </div>
+            </header>
+
+            <!-- Dashboard -->
+            <section class="dashboard">
+                <!-- Cards de Pedidos e Armazenamento -->
+                <div class="cards-container">
+                    <!-- Card Pedidos -->
+                    <div class="card pedidos-card">
+                        <h2 class="card-title">Pedidos</h2>
+                        <div class="metrics">
+                            <div class="metric">
+                                <div class="metric-icon">
+                                    <i class="fas fa-circle-exclamation"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <span class="metric-number">31</span>
+                                    <span class="metric-label">Pedidos em aberto</span>
+                                </div>
+                            </div>
+                            <div class="metric-divider"></div>
+                            <div class="metric">
+                                <div class="metric-icon">
+                                    <i class="fas fa-arrow-right-arrow-left"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <span class="metric-number">21</span>
+                                    <span class="metric-label">Pedidos em separação</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Armazenamento -->
+                    <div class="card armazenamento-card">
+                        <h2 class="card-title">Armazenamento</h2>
+                        <div class="metrics">
+                            <div class="metric">
+                                <div class="metric-icon">
+                                    <i class="fas fa-warehouse"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <span class="metric-number">31</span>
+                                    <span class="metric-label">Estoque Geral</span>
+                                </div>
+                            </div>
+                            <div class="metric-divider"></div>
+                            <div class="metric">
+                                <div class="metric-icon">
+                                    <i class="fas fa-triangle-exclamation"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <span class="metric-number">21</span>
+                                    <span class="metric-label">Estoque Comprometido</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table Card -->
+                <div class="card table-card low-stock">
+                    <h2 class="card-title">Itens em pouca quantidade</h2>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Estoque atual</th>
+                                    <th>Pedidos para este item</th>
+                                    <th>Previsão de entrega</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Conteúdo preenchido pelo script.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventário - Gestão de Materiais e Insumos - LATAM CARGO</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="menu">
+                <ul>
+                    <li><a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i><span>Início</span></a></li>
+                    <li><a href="inventario.html" class="menu-item active"><i class="fas fa-box-open"></i><span>Inventário</span></a></li>
+                    <li><a href="pedidos.html" class="menu-item"><i class="fas fa-clipboard-list"></i><span>Pedidos</span></a></li>
+                    <li><a href="cadastro.html" class="menu-item"><i class="fas fa-plus-circle"></i><span>Cadastro</span></a></li>
+                    <li><a href="Relatorios.html" class="menu-item"><i class="fas fa-chart-bar"></i><span>Relatórios</span></a></li>
+                    <li><a href="login.html" class="menu-item" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Sair</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h1 class="title">Inventário</h1>
+                </div>
+                <div class="header-right">
+                    <img src="latam_logo.png" alt="LATAM CARGO Logo" class="logo">
+                </div>
+            </header>
+
+            <!-- Inventário Content -->
+            <section class="dashboard inventario-content">
+                <div class="inventory-controls">
+                    <div class="filters">
+                        <select class="input-field select-field" aria-label="Filtrar por nome">
+                            <option value="">Nome do material</option>
+                            <option value="Papel Sulfite">Papel Sulfite</option>
+                            <option value="Papel Toalha">Papel Toalha</option>
+                            <option value="Caixa Box">Caixa Box</option>
+                        </select>
+                        <select class="input-field select-field" aria-label="Filtrar por quantidade">
+                            <option value="">Quantidade</option>
+                            <option value="Baixa">Baixa</option>
+                            <option value="Média">Média</option>
+                            <option value="Alta">Alta</option>
+                        </select>
+                    </div>
+                    <a href="cadastro.html" class="button primary-button">
+                        <i class="fas fa-plus"></i>
+                        <span>Cadastrar</span>
+                    </a>
+                </div>
+
+                <!-- Table Card -->
+                <div class="card table-card">
+                    <h2 class="card-title">Estoque</h2>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Estoque atual</th>
+                                    <th>Pedidos para este item</th>
+                                    <th>Previsão de entrega</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- O conteúdo da tabela será preenchido pelo script.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

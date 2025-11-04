@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LATAM Cargo - Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="login-box">
+      <div class="logo-section">
+        <div class="logo"><img src="assets/LATAM_Cargo_logo 1.png"></div>
+        <h1 class="title-desktop">GESTÃO DE MATERIAIS E INSUMOS</h1>
+        <h1 class="title-mobile">GESTÃO DE MATERIAIS E INSUMOS</h1>
+      </div>
+
+      <!-- Login -->
+      <form class="auth-form login-form" id="loginForm">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" placeholder="seuemail@latam.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Senha</label>
+          <input type="password" id="login-password" placeholder="*********" required>
+        </div>
+
+      <div class="row">
+  <div class="forgot-password">
+    <a href="#" id="forgotLink">Esqueceu sua senha?</a>
+
+    <!-- Modal inline de redefinição -->
+    <div id="resetPasswordInline" class="reset-modal" style="display: none;">
+      <span id="closeInline" class="close-inline">&times;</span>
+      <p>Digite seu e-mail para receber instruções:</p>
+      <input type="email-reset" id="reset-email-inline" placeholder="seuemail@latam.com">
+      <button id="resetBtnInline">Enviar</button>
+    </div>
+  </div>
+</div>
+
+
+        <button type="submit" class="btn-primary">Acessar</button>
+
+        <div class="button-group">
+          <button type="button" class="btn-secondary active" id="loginBtn">Acessar</button>
+          <button type="button" class="btn-outline" id="registerBtn">Registrar</button>
+        </div>
+      </form>
+
+      <!-- Registro -->
+      <form class="auth-form register-form hidden" id="registerForm">
+        <div class="form-group">
+          <label for="register-name">Nome Completo</label>
+          <input type="text" id="register-name" placeholder="Seu Nome Completo" required>
+        </div>
+
+        <div class="form-group">
+          <label for="register-email">Email</label>
+          <input type="email" id="register-email" placeholder="seuemail@latam.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="register-password">Senha</label>
+          <input type="password" id="register-password" placeholder="Mínimo 8 caracteres" required>
+        </div>
+
+        <button type="submit" class="btn-primary">Registrar</button>
+
+        <div class="button-group">
+          <button type="button" class="btn-outline" id="loginBtn2">Acessar</button>
+          <button type="button" class="btn-secondary active" id="registerBtn2">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+  
+
+
+
+
+
+
+  <footer class="footer">LATAM CARGO 2025</footer>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>

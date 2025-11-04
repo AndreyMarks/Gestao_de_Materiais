@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos - Gestão de Materiais e Insumos - LATAM CARGO</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="menu">
+                <ul>
+                    <li><a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i><span>Início</span></a></li>
+                    <li><a href="inventario.html" class="menu-item"><i class="fas fa-box-open"></i><span>Inventário</span></a></li>
+                    <li><a href="pedidos.html" class="menu-item active"><i class="fas fa-clipboard-list"></i><span>Pedidos</span></a></li>
+                    <li><a href="cadastro.html" class="menu-item"><i class="fas fa-plus-circle"></i><span>Cadastro</span></a></li>
+                    <li><a href="Relatorios.html" class="menu-item"><i class="fas fa-chart-bar"></i><span>Relatórios</span></a></li>
+                    <li><a href="login.html" class="menu-item" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Sair</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h1 class="title">Pedidos</h1>
+                </div>
+                <div class="header-right">
+                    <img src="latam_logo.png" alt="LATAM CARGO Logo" class="logo">
+                </div>
+            </header>
+
+            <!-- Orders Content -->
+            <section class="dashboard" id="orderViewContainer">
+                <nav class="pedidos-nav">
+                    <button class="button primary-button" id="btnNovoPedido">Novo Pedido</button>
+                    <button class="button secondary-button" id="btnAcompanharPedido">Acompanhar Pedido</button>
+                    <button class="button secondary-button" id="btnAtualizarPedido">Atualizar Pedido</button>
+                </nav>
+
+                <!-- View: Pedidos em Aberto (Default) -->
+                <div id="pedidosEmAbertoView" class="pedidos-view active-view card table-card">
+                    <h2 class="card-title">Pedidos em Aberto</h2>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Status</th>
+                                    <th>Tipo de Pedido</th>
+                                    <th>Local de Entrega</th>
+                                    <th>Prioridade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Exemplo de linha de pedido -->
+                                <tr>
+                                    <td data-label="Data">01/11/2025</td>
+                                    <td data-label="Status">Pendente</td>
+                                    <td data-label="Tipo de Pedido">Material de Escritório</td>
+                                    <td data-label="Local de Entrega">GRU</td>
+                                    <td data-label="Prioridade">Alta</td>
+                                </tr>
+                                <!-- Mais linhas de pedidos viriam aqui -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- View: Novo Pedido -->
+                <div id="novoPedidoView" class="pedidos-view hidden-view form-container">
+                    <h2 class="card-title">Novo Pedido</h2>
+                    <form id="formNovoPedido">
+                        <div class="form-group">
+                            <label for="tipoPedido">Nome do Solicitante</label>
+                            <input type="text" id="tipoPedido" name="tipoPedido" class="input-field" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataEntrega">Data do Pedido</label>
+                            <input type="date" id="dataEntrega" name="dataEntrega" class="input-field" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="localCusto">Local/Centro de Custo</label>
+                            <input type="text" id="localCusto" name="localCusto" class="input-field" required>
+                        </div>
+                        
+                        <h3 class="card-title" style="margin-top: 20px;">Itens Solicitados</h3>
+                        <div id="itensSolicitados">
+                            <!-- Item 1 -->
+                            <div class="item-row-compact">
+                                <div class="form-group item-col-nome">
+                                    <input type="text" id="itemNome1" name="itemNome1" class="input-field" placeholder="Nome do Item" required>
+                                </div>
+                                <div class="form-group item-col-qtd">
+                                    <input type="number" id="itemQtd1" name="itemQtd1" class="input-field" placeholder="Qtd" required>
+                                </div>
+                                <div class="form-group item-col-obs">
+                                    <input type="text" id="itemObs1" name="itemObs1" class="input-field" placeholder="Observação">
+                                </div>
+                                <div class="form-group item-col-entrega">
+                                    <input type="text" id="itemEntrega1" name="itemEntrega1" class="input-field" placeholder="Entrega Área">
+                                </div>
+                                <button type="button" class="btn-remove-item">-</button>
+                            </div>
+                        </div>
+                        <button type="button" class="button secondary-button btn-add-item-compact" id="addItemBtn" style="margin-top: 10px;">+ Adicionar Item</button>
+
+                        <button type="submit" class="button primary-button" style="margin-top: 20px; width: 100%;">Enviar Pedido</button>
+                    </form>
+                </div>
+
+                <!-- View: Acompanhar Pedido -->
+                <div id="acompanharPedidoView" class="pedidos-view hidden-view form-container">
+                    <h2 class="card-title">Acompanhar Pedido</h2>
+                    <form id="formAcompanharPedido">
+                        <div class="form-group">
+                            <label for="numPedidoAcompanhar">Número do Pedido</label>
+                            <input type="text" id="numPedidoAcompanhar" name="numPedidoAcompanhar" class="input-field" required>
+                        </div>
+                        <button type="submit" class="button primary-button">Buscar</button>
+                    </form>
+                    
+                    <div id="resultadoAcompanhamento" style="margin-top: 20px; display: none;">
+                        <!-- O resultado da busca seria inserido aqui -->
+                    </div>
+                </div>
+                
+                <!-- View: Atualizar Pedido -->
+                <div id="atualizarPedidoView" class="pedidos-view hidden-view form-container">
+                    <h2 class="card-title">Atualizar Pedido</h2>
+                    <form id="formAtualizarPedido">
+                        <div class="form-group">
+                            <label for="numPedidoAtualizar">Número do Pedido</label>
+                            <input type="text" id="numPedidoAtualizar" name="numPedidoAtualizar" class="input-field" required>
+                        </div>
+                        <button type="submit" class="button primary-button">Buscar Pedido</button>
+                    </form>
+                    
+                    <div id="detalhesAtualizacao" style="margin-top: 20px; display: none;">
+                        <div class="form-group">
+                            <label for="novoStatus">Novo Status</label>
+                            <select id="novoStatus" name="novoStatus" class="select-field">
+                                <option value="Pendente">Pendente</option>
+                                <option value="Em Separação">Em Separação</option>
+                                <option value="Enviado">Enviado</option>
+                                <option value="Entregue">Entregue</option>
+                                <option value="Cancelado">Cancelado</option>
+                            </select>
+                        </div>
+                        <button type="button" class="button primary-button">Salvar Atualização</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
