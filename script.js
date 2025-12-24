@@ -260,6 +260,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.inventario-content')) {
         const inventory = getInventory();
         renderInventoryTable(inventory);
+
+        const searchBar = document.getElementById('search-bar');
+        searchBar.addEventListener('input', () => {
+            const searchTerm = searchBar.value.toLowerCase();
+            const filteredInventory = inventory.filter(item => item.nome.toLowerCase().includes(searchTerm));
+            renderInventoryTable(filteredInventory);
+        });
     }
 
     // Página Inicial (Dashboard)
